@@ -1,0 +1,100 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "name": "أسبير واحد اثنين تلاتة اربعة",
+            "buy_price": 250,
+            "sell_price": 300,
+            "quantity": 23,
+            "status": "متوفر"
+        },
+        {
+            "id": 12,
+            "name": "أسبير2",
+            "buy_price": 250,
+            "sell_price": 300,
+            "quantity": 23,
+            "status": "متوفر"
+        },
+        {
+            "id": 123,
+            "name": "أسبير3",
+            "buy_price": 300,
+            "sell_price": 300,
+            "quantity": 23,
+            "status": "متوفر"
+        },
+        {
+            "id": 11,
+            "name": "أسبير4",
+            "buy_price": 300,
+            "sell_price": 300,
+            "quantity": 23,
+            "status": "متوفر"
+        },
+        {
+            "id": 122,
+            "name": "أسبير5",
+            "buy_price": 300,
+            "sell_price": 300,
+            "quantity": 23,
+            "status": "متوفر"
+        },
+        {
+            "id": 1233,
+            "name": "أسبير6",
+            "buy_price": 300,
+            "sell_price": 300,
+            "quantity": 23,
+            "status": "متوفر"
+        },
+        {
+            "id": 14,
+            "name": "أسبير7",
+            "buy_price": 300,
+            "sell_price": 300,
+            "quantity": 23,
+            "status": "متوفر"
+        },
+        {
+            "id": 124,
+            "name": "أسبير8",
+            "buy_price": 300,
+            "sell_price": 300,
+            "quantity": 23,
+            "status": "متوفر"
+        },
+        {
+            "id": 1234,
+            "name": "أسبير9",
+            "buy_price": 300,
+            "sell_price": 300,
+            "quantity": 23,
+            "status": "متوفر"
+        },
+        {
+            "id": 114,
+            "name": "أسبير10",
+            "buy_price": 300,
+            "sell_price": 300,
+            "quantity": 23,
+            "status": "متوفر"
+        },
+        {
+            "id": 1224,
+            "name": "أسبير11",
+            "buy_price": 300,
+            "sell_price": 300,
+            "quantity": 23,
+            "status": "متوفر"
+        },
+        {
+            "id": 12334,
+            "name": "أسبير12",
+            "buy_price": 300,
+            "sell_price": 300,
+            "quantity": 23,
+            "status": "متوفر"
+        }
+    ]
+}
