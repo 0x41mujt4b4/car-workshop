@@ -96,5 +96,16 @@
             "quantity": 23,
             "status": "متوفر"
         }
+    ],
+    "cars": [
+        {
+            "plate_no": "1324",
+            "model": "أفانتي",
+            "owner": "محمد أحمد",
+            "color": "أبيض",
+            "total_cost": 600000,
+            "repair_cost": 400000
+
+        }
     ]
 }

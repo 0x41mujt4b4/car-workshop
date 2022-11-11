@@ -9,7 +9,7 @@ const LoginPage = () => {
                 heading="دنبلاب لصيانة السيارات"
                 paragraph="فضلاً قم بتسجيل الدخول"
                 // linkName="Signup"
-                linkUrl="/signup"
+                // linkUrl="/signup"
                 />
                 <Login />
             

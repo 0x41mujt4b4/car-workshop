@@ -22,8 +22,8 @@ const POSpage = () => {
 
   const addProductToCard = async (product) => {
     // check if the adding product exist
-    let findProductInCart = await cart.find((i) => {
-      return i.id === product.id;
+    let findProductInCart = await cart.find((item) => {
+      return item.id === product.id;
     });
 
     if (findProductInCart) {

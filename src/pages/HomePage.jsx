@@ -26,7 +26,7 @@ const cards = [
   {
     title: "عرض السيارات",
     src: showCars,
-    url: "#",
+    url: "/cars",
   },
 ];
 
