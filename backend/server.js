@@ -66,7 +66,7 @@ app.post(
       product,
       (err, result) => {
         if (err) throw err;
-        return res.json(result);
+        return res.json({ msg: "Product added" });
       }
     );
   }
@@ -90,7 +90,7 @@ app.patch("/products/:id", (req, res) => {
     product,
     (err, result) => {
       if (err) throw err;
-      return res.send("Product modified");
+      return res.json({ msg: "Product modified" });
     }
   );
 });
@@ -102,7 +102,7 @@ app.delete("/products/:id", (req, res) => {
     `delete from car_workshop.product where id=${req.params.id}`,
     (err, result) => {
       if (err) throw err;
-      return res.send("Product deleted");
+      return res.json({ msg: "Product deleted" });
     }
   );
 });
@@ -110,11 +110,29 @@ app.delete("/products/:id", (req, res) => {
 // Cars routes
 
 //@route    GET /cars
-//@desc     gets all cars
+//@desc     Gets all cars
 app.get("/cars", (req, res) => {
   db.query("select * from car_workshop.car", (err, result) => {
     if (err) throw err;
     return res.json(result);
+  });
+});
+
+//@route    POST /cars
+//@desc     Add a new car
+app.post("/cars", [check("", "").notEmpty()], (req, res) => {
+  // Check for required fields
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors });
+  }
+
+  const { plate_no, model, owner, total_cost, repair_cost } = req.body;
+  const car = { plate_no, model, owner, total_cost, repair_cost };
+
+  db.query("insert into car_workshop.car set ?", car, (err, result) => {
+    if (err) throw err;
+    return res.json({ msg: "car added" });
   });
 });
 
