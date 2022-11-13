@@ -14,7 +14,7 @@ const Table = ({ cart, totalAmount, removeProductFromCart }) => {
   };
 
   return (
-    <div className="flex flex-col justify-between bg-white rounded py-2 px-4">
+    <div className="flex flex-col justify-between bg-white rounded p-2">
       <div style={{ display: "none" }}>
           <ComponentToPrint
           cart={cart}
@@ -76,7 +76,7 @@ const Table = ({ cart, totalAmount, removeProductFromCart }) => {
       <div className="">
         <h2 className="text-xl text-center my-2"> <span className="text-cyan-800">{totalAmount}</span> :السعر الكلي</h2>
         <div className="flex justify-center">
-              <button className="bg-blue-700 hover:bg-blue-600 text-white font-bold py-1 px-2 rounded" onClick={() => handlePrint()}>
+              <button className="bg-cyan-700 hover:bg-cyan-600 text-white font-bold py-1 px-2 rounded" onClick={() => handlePrint()}>
                 إستخراج الفاتورة
               </button>
           {/* {totalAmount !== 0 ? (

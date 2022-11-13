@@ -64,4 +64,65 @@ const signupFields=[
     }
 ]
 
-export {loginFields,signupFields}
+const carFields = [
+    {
+      label: "تكلفة الصيانة",
+      id: "repair_cost",
+      type: "number",
+    },
+    {
+      label: "إجمالي التكلفة",
+      id: "total_cost",
+      type: "number",
+    },
+    {
+      label: "اللون",
+      id: "color",
+      type: "text",
+    },
+    {
+      label: "المالك",
+      id: "owner",
+      type: "text",
+    },
+    {
+      label: "نوع السيارة",
+      id: "type",
+      type: "text",
+    },
+    {
+      label: "رقم اللوحة",
+      id: "type",
+      type: "text",
+    },
+  ];
+
+  const itemFields = [
+    {
+      label: "الاسبير",
+      id: "item",
+      type: "text",
+    },
+    {
+      label: "الحالة",
+      id: "condition",
+      type: "text",
+    },
+    {
+      label: "الكمية",
+      id: "quantity",
+      type: "number",
+    },
+    {
+      label: "سعر الشراء",
+      id: "item_sell_price",
+      type: "number",
+    },
+    {
+      label: "سعر البيع",
+      id: "item_buy_price",
+      type: "number",
+    },
+  ]
+
+export {loginFields,signupFields, carFields, itemFields}

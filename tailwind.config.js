@@ -4,7 +4,11 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'danblab-background': "url('src/assets/images/danblab_logo.png')",
+      }
+    },
   },
   plugins: [],
 }

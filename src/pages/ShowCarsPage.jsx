@@ -9,11 +9,12 @@ import { Button } from "@mui/material";
 import Header from "../components/Header";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
   const ShowCarsPage = () => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-
+  const navigate = useNavigate()
   const fetchProducts = async () => {
     setIsLoading(true);
     const result = await axios.get("http://localhost:5000/cars");
@@ -58,16 +59,19 @@ import axios from "axios";
     td: "p-1 md:p-2 hover:cursor-pointer text-sm",
   };
   return (
-    <>
+    <div className="h-full w-full bg-slate-300">
     <Header
                 heading="دنبلاب لصيانة السيارات"
                 // paragraph="الاسبيرات"
-                linkName="الرجوع للصفحة الرئيسية"
-                linkUrl="/home"
+                // linkName="الرجوع للصفحة الرئيسية"
+                // linkUrl="/home"
                 />
     <div class="container mx-auto px-4">
-    <div className="flex flex-row gap-2 justify-around pb-4">
+    <div className="flex flex-row gap-2 justify-between md:px-20 lg:px-28 pb-4">
+      <div className="flex gap-2">
+        <Button variant='contained' color='secondary' size='small' onClick={()=>navigate('/home')}>رجوع للقائمة الرئيسية</Button>
         <Button variant="contained" size="small">إضافة سيارة</Button>
+      </div>
       <Search /> 
     </div>
       <div class="inline-grid w-full overflow-y-auto max-h-80 md:px-20 lg:px-28">
@@ -134,7 +138,7 @@ import axios from "axios";
         </table>
       </div>
     </div>
-  </>
+  </div>
   );
 };
 

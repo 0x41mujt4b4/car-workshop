@@ -5,6 +5,9 @@ import InvoiceMenu from "../components/InvoiceMenu";
 import AddProduct from "../components/AddProduct";
 import ProductsMenu from "../components/ProductsMenu";
 import Header from "../components/Header";
+import { Button } from "@mui/material";
+import Search from "../components/Search";
+import { useNavigate } from "react-router-dom";
 
 const POSpage = () => {
   const [products, setProducts] = useState([]);
@@ -12,7 +15,7 @@ const POSpage = () => {
   const [cart, setCart] = useState([]);
   const [totalAmount, setTotalAmount] = useState(0);
   const [showAddProduct, setShowAddProduct] = useState(false);
-
+  const navigate = useNavigate()
   const fetchProducts = async () => {
     setIsLoading(true);
     const result = await axios.get("http://localhost:5000/products");
@@ -59,9 +62,11 @@ const POSpage = () => {
   };
 
   const removeProduct = async (toDelete) => {
-    const newProducts = products.filter(product => toDelete.id !== product.id)
-    setProducts(newProducts)
-  }
+    const newProducts = products.filter(
+      (product) => toDelete.id !== product.id
+    );
+    setProducts(newProducts);
+  };
 
   useEffect(() => {
     fetchProducts();
@@ -75,35 +80,48 @@ const POSpage = () => {
     setTotalAmount(newTotalAmount);
   }, [cart]);
   return (
-    <>
+    <div className="h-full w-full bg-slate-300">
       <Header
-                heading="دنبلاب لصيانة السيارات"
-                // paragraph="الاسبيرات"
-                linkName="الرجوع للصفحة الرئيسية"
-                linkUrl="/home"
-                />
+        heading="دنبلاب لصيانة السيارات"
+        // paragraph="الاسبيرات"
+        // linkName="الرجوع للصفحة الرئيسية"
+        // linkUrl="/home"
+      />
       {showAddProduct ? (
         <AddProduct setShowAddProduct={setShowAddProduct} />
       ) : null}
+      <div className="flex flex-col lg:px-14">
+        <div className="flex flex-row gap-2 justify-between px-4">
+          <div className="flex gap-2">
+            <Button
+              variant="contained"
+              color="secondary"
+              size="small"
+              onClick={() => navigate("/home")}
+            >
+              رجوع للقائمة الرئيسية
+            </Button>
+            <Button variant="contained" size="small">
+              إضافة اسبير
+            </Button>
+          </div>
+          <Search />
+        </div>
       <div className="grid grid-cols-[1fr_2fr] max-h-screen p-4 gap-8">
-            <InvoiceMenu
-              cart={cart}
-              totalAmount={totalAmount}
-              removeProductFromCart={removeProductFromCart}
-            />
-        {/* <div className="px-12 w-full">
-          </div> */}
-          {/* <div className="inline-grid w-full"> */}
-            <ProductsMenu isLoading={isLoading}
-             products={products} addProductToCard={addProductToCard}
-             removeProduct={removeProduct}
-              />
-          {/* </div> */}
-        {/* <div className="w-auto p-3">
-        </div> */}
-        
+        <InvoiceMenu
+          cart={cart}
+          totalAmount={totalAmount}
+          removeProductFromCart={removeProductFromCart}
+        />
+        <ProductsMenu
+          isLoading={isLoading}
+          products={products}
+          addProductToCard={addProductToCard}
+          removeProduct={removeProduct}
+        />
       </div>
-    </>
+    </div>
+    </div>
   );
 };
 

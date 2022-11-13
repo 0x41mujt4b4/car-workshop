@@ -6,17 +6,18 @@ import showCars from "../assets/images/car-repair.png";
 import spareParts from "../assets/images/spare-parts.png";
 import addPart from "../assets/images/repair.png"
 import Header from "../components/Header";
+import manageUsers from "../assets/images/team-management.png"
 
 const cards = [
   {
     title: "إضافة اسبير",
     src: addPart,
-    url: "#",
+    url: "/add_item",
   }, 
   {
     title: "إضافة سيارة",
     src: maintenance,
-    url: "#",
+    url: "/add_car",
   },
   {
     title: "الأسبيرات",
@@ -28,6 +29,11 @@ const cards = [
     src: showCars,
     url: "/cars",
   },
+  {
+    title: "إدارة الموظفين",
+    src: manageUsers,
+    url: "#",
+  },
 ];
 
 const HomePage = () => {
@@ -35,9 +41,9 @@ const HomePage = () => {
     <>
       <Header
         heading="دنبلاب لصيانة السيارات"
-        paragraph="الصفحة الرئيسية"
+        // paragraph="الصفحة الرئيسية"
         // linkName="Signup"
-        linkUrl="/signup"
+        // linkUrl="/signup"
       />
       <div class="flex items-center justify-center">
         <div class="grid sm:grid-cols-4 xs:grid-cols-1 gap-2 p-6">

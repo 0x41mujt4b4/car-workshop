@@ -46,6 +46,7 @@ export default function Login(){
                                 type={field.type}
                                 isRequired={field.isRequired}
                                 placeholder={field.placeholder}
+                                customClass="placeholder: text-right"
                         />
                     
                     )
