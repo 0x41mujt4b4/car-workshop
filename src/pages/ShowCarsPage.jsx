@@ -2,9 +2,6 @@ import React from "react";
 import Search from "../components/Search";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
-import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
-import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
-import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import { Button } from "@mui/material";
 import Header from "../components/Header";
 import { useState, useEffect } from "react";
@@ -62,6 +59,7 @@ import { useNavigate } from "react-router-dom";
     <div className="h-full w-full bg-slate-300">
     <Header
                 heading="دنبلاب لصيانة السيارات"
+                customClass="h-20"
                 // paragraph="الاسبيرات"
                 // linkName="الرجوع للصفحة الرئيسية"
                 // linkUrl="/home"
@@ -70,7 +68,7 @@ import { useNavigate } from "react-router-dom";
     <div className="flex flex-row gap-2 justify-between md:px-20 lg:px-28 pb-4">
       <div className="flex gap-2">
         <Button variant='contained' color='secondary' size='small' onClick={()=>navigate('/home')}>رجوع للقائمة الرئيسية</Button>
-        <Button variant="contained" size="small">إضافة سيارة</Button>
+        <Button variant="contained" size="small" onClick={() => navigate('/add_car')}>إضافة سيارة</Button>
       </div>
       <Search /> 
     </div>

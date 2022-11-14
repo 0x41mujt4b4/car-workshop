@@ -40,6 +40,7 @@ const HomePage = () => {
   return (
     <>
       <Header
+        customClass="h-20"
         heading="دنبلاب لصيانة السيارات"
         // paragraph="الصفحة الرئيسية"
         // linkName="Signup"

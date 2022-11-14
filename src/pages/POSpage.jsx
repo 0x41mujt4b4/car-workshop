@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import InvoiceMenu from "../components/InvoiceMenu";
-import AddProduct from "../components/AddProduct";
+import AddProduct from "../components/AddItem";
 import ProductsMenu from "../components/ProductsMenu";
 import Header from "../components/Header";
 import { Button } from "@mui/material";
@@ -83,6 +83,7 @@ const POSpage = () => {
     <div className="h-full w-full bg-slate-300">
       <Header
         heading="دنبلاب لصيانة السيارات"
+        customClass="h-20"
         // paragraph="الاسبيرات"
         // linkName="الرجوع للصفحة الرئيسية"
         // linkUrl="/home"
@@ -101,7 +102,7 @@ const POSpage = () => {
             >
               رجوع للقائمة الرئيسية
             </Button>
-            <Button variant="contained" size="small">
+            <Button variant="contained" size="small" onClick={() => navigate('/add_item')}>
               إضافة اسبير
             </Button>
           </div>

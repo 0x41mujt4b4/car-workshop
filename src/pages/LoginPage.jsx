@@ -4,9 +4,10 @@ import Login from '../components/Login'
 
 const LoginPage = () => {
   return (
-    <div className='pt-24'>
+    <div className='h-full w-full'>
              <Header
-                heading="دنبلاب لصيانة السيارات"
+                customClass="h-20 mt-20"
+                // heading="دنبلاب لصيانة السيارات"
                 paragraph="فضلاً قم بتسجيل الدخول"
                 // linkName="Signup"
                 // linkUrl="/signup"

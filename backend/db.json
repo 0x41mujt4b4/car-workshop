@@ -1,111 +1,97 @@
 {
-    "products": [
-        {
-            "id": 1,
-            "name": "أسبير واحد اثنين تلاتة اربعة",
-            "buy_price": 250,
-            "sell_price": 300,
-            "quantity": 23,
-            "status": "متوفر"
-        },
-        {
-            "id": 12,
-            "name": "أسبير2",
-            "buy_price": 250,
-            "sell_price": 300,
-            "quantity": 23,
-            "status": "متوفر"
-        },
-        {
-            "id": 123,
-            "name": "أسبير3",
-            "buy_price": 300,
-            "sell_price": 300,
-            "quantity": 23,
-            "status": "متوفر"
-        },
-        {
-            "id": 11,
-            "name": "أسبير4",
-            "buy_price": 300,
-            "sell_price": 300,
-            "quantity": 23,
-            "status": "متوفر"
-        },
-        {
-            "id": 122,
-            "name": "أسبير5",
-            "buy_price": 300,
-            "sell_price": 300,
-            "quantity": 23,
-            "status": "متوفر"
-        },
-        {
-            "id": 1233,
-            "name": "أسبير6",
-            "buy_price": 300,
-            "sell_price": 300,
-            "quantity": 23,
-            "status": "متوفر"
-        },
-        {
-            "id": 14,
-            "name": "أسبير7",
-            "buy_price": 300,
-            "sell_price": 300,
-            "quantity": 23,
-            "status": "متوفر"
-        },
-        {
-            "id": 124,
-            "name": "أسبير8",
-            "buy_price": 300,
-            "sell_price": 300,
-            "quantity": 23,
-            "status": "متوفر"
-        },
-        {
-            "id": 1234,
-            "name": "أسبير9",
-            "buy_price": 300,
-            "sell_price": 300,
-            "quantity": 23,
-            "status": "متوفر"
-        },
-        {
-            "id": 114,
-            "name": "أسبير10",
-            "buy_price": 300,
-            "sell_price": 300,
-            "quantity": 23,
-            "status": "متوفر"
-        },
-        {
-            "id": 1224,
-            "name": "أسبير11",
-            "buy_price": 300,
-            "sell_price": 300,
-            "quantity": 23,
-            "status": "متوفر"
-        },
-        {
-            "id": 12334,
-            "name": "أسبير12",
-            "buy_price": 300,
-            "sell_price": 300,
-            "quantity": 23,
-            "status": "متوفر"
-        }
-    ],
-    "cars": [
-        {
-            "plate_no": "1324",
-            "model": "أفانتي",
-            "owner": "محمد أحمد",
-            "color": "أبيض",
-            "total_cost": 600000,
-            "repair_cost": 400000
-
-        }
-    ]
+  "products": [
+    {
+      "id": 1,
+      "name": "أسبير 1",
+      "buy_price": 250,
+      "sell_price": 300,
+      "quantity": 23,
+      "status": "متوفر"
+    },
+    {
+      "id": 12,
+      "name": "أسبير2",
+      "buy_price": 250,
+      "sell_price": 300,
+      "quantity": 23,
+      "status": "متوفر"
+    },
+    {
+      "id": 123,
+      "name": "أسبير3",
+      "buy_price": 300,
+      "sell_price": 300,
+      "quantity": 23,
+      "status": "متوفر"
+    },
+    {
+      "id": 11,
+      "name": "أسبير4",
+      "buy_price": 300,
+      "sell_price": 300,
+      "quantity": 23,
+      "status": "متوفر"
+    },
+    {
+      "id": 122,
+      "name": "أسبير5",
+      "buy_price": 300,
+      "sell_price": 300,
+      "quantity": 23,
+      "status": "متوفر"
+    },
+    {
+      "id": 1233,
+      "name": "أسبير6",
+      "buy_price": 300,
+      "sell_price": 300,
+      "quantity": 23,
+      "status": "متوفر"
+    },
+    {
+      "id": "111fe883-7e56-4d2e-8853-71d1c6e89038",
+      "name": "اسبير 55",
+      "status": "متوفر",
+      "quantity": "45",
+      "sell_price": "7000",
+      "buy_price": "8000"
+    },
+    {
+      "id": "4e66a7ff-3ce6-4c79-adc0-9e453576aba8",
+      "name": "اسبير 0",
+      "status": "متوفر",
+      "quantity": "26",
+      "sell_price": "7000",
+      "buy_price": "9000"
+    }
+  ],
+  "cars": [
+    {
+      "id": 123424,
+      "plate_no": "1324",
+      "model": "أفانتي",
+      "owner": "محمد أحمد",
+      "color": "أبيض",
+      "total_cost": 600000,
+      "repair_cost": 400000
+    },
+    {
+      "id": "552eb609-6ae7-4f6f-bb5b-d3e3e695412e",
+      "plate_no": "1342-34",
+      "model": "مرسيدس",
+      "owner": "عبدالله خالد",
+      "color": "رمادي",
+      "total_cost": "3000",
+      "repair_cost": "5000"
+    },
+    {
+      "id": "2190d3da-2733-4270-b85a-952a3f2f4245",
+      "plate_no": "6443-23",
+      "model": "بوكس",
+      "owner": "حسن علي",
+      "color": "احمر",
+      "total_cost": "400",
+      "repair_cost": "600"
+    }
+  ]
 }
