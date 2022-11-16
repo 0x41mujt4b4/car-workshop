@@ -63,6 +63,14 @@
       "quantity": "26",
       "sell_price": "7000",
       "buy_price": "9000"
+    },
+    {
+      "id": "97c9ba9a-abc5-48d4-bdfa-95e9edfbd788",
+      "name": "Item1",
+      "status": "متوفر",
+      "quantity": "33",
+      "sell_price": "2000",
+      "buy_price": "3000"
     }
   ],
   "cars": [
@@ -92,6 +100,33 @@
       "color": "احمر",
       "total_cost": "400",
       "repair_cost": "600"
+    },
+    {
+      "id": "105ed15c-1014-48c9-b40f-25bdf126593f",
+      "plate_no": "4234-13",
+      "model": "تسونادا",
+      "owner": "احمد بشير",
+      "color": "احمر",
+      "total_cost": "222",
+      "repair_cost": "453"
+    },
+    {
+      "id": "a1f93015-388b-452a-87b3-5768edc25cf8",
+      "plate_no": "3452-23",
+      "model": "تايوتا",
+      "owner": "عمر حسن",
+      "color": "اصفر",
+      "total_cost": "2345",
+      "repair_cost": "5534"
+    },
+    {
+      "id": "210387d5-0046-48ed-844c-706661d201a7",
+      "plate_no": "4234-13",
+      "model": "تايوتا",
+      "owner": "حسن علي",
+      "color": "رمادي",
+      "total_cost": "333",
+      "repair_cost": "444"
     }
   ]
 }

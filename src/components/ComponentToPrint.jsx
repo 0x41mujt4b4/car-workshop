@@ -5,20 +5,20 @@ export const ComponentToPrint = React.forwardRef((props, ref) => {
     return (
       <div ref={ref} className="p-5">
         <h2 className="">الفاتورة</h2>
-      <div class="">
-        <table class="">
-          <thead class="">
+      <div className="">
+        <table className="">
+          <thead className="">
             <tr>
-              <th scope="col" class="py-1 px-1">
+              <th scope="col" className="py-1 px-1">
                 الإجمالي
               </th>
-              <th scope="col" class="py-1 px-1">
+              <th scope="col" className="py-1 px-1">
                 سعر البيع
               </th>
-              <th scope="col" class="py-1 px-1">
+              <th scope="col" className="py-1 px-1">
                 الكمية
               </th>
-              <th scope="col" class="py-1 px-1">
+              <th scope="col" className="py-1 px-1">
                 الإسم
               </th>
             </tr>
@@ -26,13 +26,13 @@ export const ComponentToPrint = React.forwardRef((props, ref) => {
           <tbody>
             {cart
               ? cart.map((cartProduct, key) => (
-                  <tr key={key} class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                    <td class="py-1 px-1">{cartProduct.totalAmount}</td>
-                    <td class="py-1 px-1">{cartProduct.price}</td>
-                    <td class="py-1 px-1">{cartProduct.quantity}</td>
+                  <tr key={key} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                    <td className="py-1 px-1">{cartProduct.totalAmount}</td>
+                    <td className="py-1 px-1">{cartProduct.price}</td>
+                    <td className="py-1 px-1">{cartProduct.quantity}</td>
                     <th
                       scope="row"
-                      class="py-1 px-1 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                      className="py-1 px-1 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                     >
                       {cartProduct.name}
                     </th>

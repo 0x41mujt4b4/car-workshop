@@ -15,6 +15,7 @@ const cards = [
     url: "/add_item",
   }, 
   {
+    
     title: "إضافة سيارة",
     src: maintenance,
     url: "/add_car",
@@ -46,10 +47,10 @@ const HomePage = () => {
         // linkName="Signup"
         // linkUrl="/signup"
       />
-      <div class="flex items-center justify-center">
-        <div class="grid sm:grid-cols-4 xs:grid-cols-1 gap-2 p-6">
-          {cards.map((card) => (
-            <ButtonCard title={card.title} src={card.src} url={card.url} />
+      <div className="flex items-center justify-center">
+        <div className="grid sm:grid-cols-4 xs:grid-cols-1 gap-2 p-6">
+          {cards.map((card, key) => (
+            <ButtonCard title={card.title} src={card.src} url={card.url} key={key}/>
           ))}
         </div>
       </div>

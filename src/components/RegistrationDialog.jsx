@@ -66,7 +66,7 @@ export default function CustomizedDialogs({ fields, title, handleClose, open, ha
               required
               autoComplete="off"
           >
-            {fields.map((name) => (
+            {fields.map((name, key) => (
               <TextField
                 dir="rtl"
                 id={name.id}
@@ -75,6 +75,7 @@ export default function CustomizedDialogs({ fields, title, handleClose, open, ha
                 inputRef={name.ref}
                 variant="standard"
                 InputLabelProps={{ required: false }}
+                key={key}
                 required
               />
             ))}

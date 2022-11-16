@@ -38,16 +38,16 @@ const Products = ({ isLoading, products, addProductToCard, removeProduct }) => {
     td: "p-1 md:p-2 hover:cursor-pointer text-sm",
   };
   return (
-    <div class="inline-grid w-full overflow-y-auto max-h-80">
+    <div className="inline-grid w-full overflow-y-auto max-h-80">
       <table className="table text-center">
         <thead className="bg-cyan-700 text-white top-0 sticky ">
           <tr>
-            {tableHead.map(el => <th className={style.th}>{el}</th>)}
+            {tableHead.map((el, key) => <th className={style.th} key={key}>{el}</th>)}
           </tr>
         </thead>
         <tbody>
           {isLoading ? (
-            "loading .."
+            null
           ) : products ? (
             products.map((product, key) => (
               <tr

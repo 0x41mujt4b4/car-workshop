@@ -49,7 +49,7 @@ const Table = ({ cart, totalAmount, removeProductFromCart }) => {
             {cart
               ? cart.map((cartProduct, key) => (
                   <tr key={key} className="border-b border-black hover:bg-slate-200 text-center">
-                    <td class="py-1 px-1 text-xs">
+                    <td className="py-1 px-1 text-xs">
                     <button
                     className="text-red-400 hover:text-red-500"
                     type="button"
@@ -58,11 +58,11 @@ const Table = ({ cart, totalAmount, removeProductFromCart }) => {
                     <ClearOutlinedIcon />
                   </button>
                     </td>
-                    <td class="py-1 px-1 text-xs">{cartProduct.totalAmount}</td>
-                    <td class="py-1 px-1 text-xs">{cartProduct.sell_price}</td>
-                    <td class="py-1 px-1 text-xs">{cartProduct.quantity}</td>
+                    <td className="py-1 px-1 text-xs">{cartProduct.totalAmount}</td>
+                    <td className="py-1 px-1 text-xs">{cartProduct.sell_price}</td>
+                    <td className="py-1 px-1 text-xs">{cartProduct.quantity}</td>
                     <td
-                      class="py-1 px-1 text-xs"
+                      className="py-1 px-1 text-xs"
                     >
                       {cartProduct.name}
                     </td>
