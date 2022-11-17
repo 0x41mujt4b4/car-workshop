@@ -25,6 +25,7 @@ app.use(express.json({ extended: false }));
 
 //@route    GET /users
 //@desc     Gets all users
+//@access   Admin
 app.get("/users", [auth, admin], (req, res) => {
   db.query("select id, email, role from car_workshop.user", (err, result) => {
     if (err) throw err;
@@ -34,7 +35,8 @@ app.get("/users", [auth, admin], (req, res) => {
 
 //@route    GET /users/:id
 //@desc     Gets user by id
-app.get("/users/:id", (req, res) => {
+//@access   Admin
+app.get("/users/:id", [auth, admin], (req, res) => {
   db.query(
     `select id, email, role from car_workshop.user where id=${req.params.id}`,
     (err, result) => {
@@ -48,7 +50,8 @@ app.get("/users/:id", (req, res) => {
 
 //@route    GET /users/email/:email
 //@desc     Gets user by email
-app.get("/users/email/:email", (req, res) => {
+//@access   Admin
+app.get("/users/email/:email", [auth, admin], (req, res) => {
   db.query(
     `select id, email, role from car_workshop.user where email="${req.params.email}"`,
     (err, result) => {
@@ -62,6 +65,7 @@ app.get("/users/email/:email", (req, res) => {
 
 //@route    POST /users
 //@desc     Registers a new user
+//@access   Admin
 app.post(
   "/users",
   [
@@ -120,6 +124,7 @@ app.post(
 
 //@route    POST /users/login
 //@desc     Logs in user
+//@access   Public
 app.post(
   "/users/login",
   [
@@ -171,7 +176,8 @@ app.post(
 
 //@route    GET /products
 //@desc     Gets all products
-app.get("/products", (req, res) => {
+//@access   User
+app.get("/products", auth, (req, res) => {
   db.query("select * from car_workshop.product", (err, result) => {
     if (err) throw err;
     return res.json(result);
@@ -180,7 +186,8 @@ app.get("/products", (req, res) => {
 
 //@route    GET /products/:id
 //@desc     Get a product using its id
-app.get("/products/:id", (req, res) => {
+//@access   User
+app.get("/products/:id", auth, (req, res) => {
   db.query(
     `select * from car_workshop.product where id=${req.params.id}`,
     (err, result) => {
@@ -195,12 +202,14 @@ app.get("/products/:id", (req, res) => {
 
 //@route    POST /products
 //@desc     Adds a new product
+//@access   User
 app.post(
   "/products",
   [
     check("name", "Name is required").notEmpty(),
     check("buy_price", "Please enter a valid buy price").isFloat({ min: 0 }),
     check("sell_price", "Please enter a valid sell price").isFloat({ min: 0 }),
+    auth,
   ],
   (req, res) => {
     // Check for required fields
@@ -228,7 +237,8 @@ app.post(
 
 //@route    PATCH /products/:id
 //@desc     Updates a product using its id
-app.patch("/products/:id", (req, res) => {
+//@access   User
+app.patch("/products/:id", auth, (req, res) => {
   const { name, buy_price, sell_price, quantity, status } = req.body;
   const product = {};
 
@@ -251,7 +261,8 @@ app.patch("/products/:id", (req, res) => {
 
 //@route    DELETE /products/:id
 //@desc     Deletes a product using its id
-app.delete("/products/:id", (req, res) => {
+//@access   User
+app.delete("/products/:id", auth, (req, res) => {
   db.query(
     `delete from car_workshop.product where id=${req.params.id}`,
     (err, result) => {
@@ -265,7 +276,8 @@ app.delete("/products/:id", (req, res) => {
 
 //@route    GET /cars
 //@desc     Gets all cars
-app.get("/cars", (req, res) => {
+//@access   User
+app.get("/cars", auth, (req, res) => {
   db.query("select * from car_workshop.car", (err, result) => {
     if (err) throw err;
     return res.json(result);
@@ -274,7 +286,8 @@ app.get("/cars", (req, res) => {
 
 //@route    GET /cars/:id
 //@desc     Gets a car using its id
-app.get("/cars/:id", (req, res) => {
+//@access   User
+app.get("/cars/:id", auth, (req, res) => {
   db.query(
     `select * from car_workshop.car where id=${req.params.id}`,
     (err, result) => {
@@ -289,6 +302,7 @@ app.get("/cars/:id", (req, res) => {
 
 //@route    POST /cars
 //@desc     Add a new car
+//@access   User
 app.post(
   "/cars",
   [
@@ -304,6 +318,7 @@ app.post(
     check("repair_cost", "Please enter a valid repair cost").isFloat({
       min: 0,
     }),
+    auth,
   ],
   (req, res) => {
     // Check for required fields
@@ -324,7 +339,8 @@ app.post(
 
 //@route    PATCH /cars/:id
 //@desc     Updates a car using its id
-app.patch("/cars/:id", (req, res) => {
+//@access   User
+app.patch("/cars/:id", auth, (req, res) => {
   const { plate_no, model, owner, total_cost, repair_cost } = req.body;
   const car = {};
 
@@ -347,7 +363,8 @@ app.patch("/cars/:id", (req, res) => {
 
 //@route    DELETE /cars/:id
 //@desc     Deletes a car using its id
-app.delete("/cars/:id", (req, res) => {
+//@access   User
+app.delete("/cars/:id", auth, (req, res) => {
   db.query(
     `delete from car_workshop.car where id=${req.params.id}`,
     (err, result) => {
