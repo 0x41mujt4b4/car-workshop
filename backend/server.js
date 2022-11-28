@@ -26,19 +26,35 @@ app.use(express.json({ extended: false }));
 //@route    GET /users
 //@desc     Gets all users
 //@access   Admin
-app.get("/users", [auth, admin], (req, res) => {
-  db.query("select id, email, role from car_workshop.user", (err, result) => {
-    if (err) throw err;
-    return res.json(result);
-  });
+app.get("/users", admin, (req, res) => {
+  db.query(
+    "select id, email, role from car_workshop.user where is_deleted=0",
+    (err, result) => {
+      if (err) throw err;
+      return res.json(result);
+    }
+  );
+});
+
+//@route    GET /users/current
+//@desc     Gets current user
+//@access   User
+app.get("/users/current", auth, (req, res) => {
+  db.query(
+    `select id, email, role from car_workshop.user where id=${req.user.id} and is_deleted=0`,
+    (err, result) => {
+      if (err) throw err;
+      return res.json(result);
+    }
+  );
 });
 
 //@route    GET /users/:id
 //@desc     Gets user by id
 //@access   Admin
-app.get("/users/:id", [auth, admin], (req, res) => {
+app.get("/users/:id", admin, (req, res) => {
   db.query(
-    `select id, email, role from car_workshop.user where id=${req.params.id}`,
+    `select id, email, role from car_workshop.user where id=${req.params.id} and is_deleted=0`,
     (err, result) => {
       if (err) throw err;
       if (result.length === 0)
@@ -51,9 +67,9 @@ app.get("/users/:id", [auth, admin], (req, res) => {
 //@route    GET /users/email/:email
 //@desc     Gets user by email
 //@access   Admin
-app.get("/users/email/:email", [auth, admin], (req, res) => {
+app.get("/users/email/:email", admin, (req, res) => {
   db.query(
-    `select id, email, role from car_workshop.user where email="${req.params.email}"`,
+    `select id, email, role from car_workshop.user where email="${req.params.email}" and is_deleted=0`,
     (err, result) => {
       if (err) throw err;
       if (result.length === 0)
@@ -71,7 +87,6 @@ app.post(
   [
     check("email", "Please enter a valid email").isEmail(),
     check("password", "Please enter a valid passowrd").notEmpty(),
-    auth,
     admin,
   ],
   async (req, res) => {
@@ -139,7 +154,7 @@ app.post(
     const { email, password } = req.body;
 
     db.query(
-      `select * from car_workshop.user where binary email="${email}"`,
+      `select * from car_workshop.user where binary email="${email} and is_deleted=0"`,
       async (err, result) => {
         if (err) throw err;
         if (result.length === 0)
@@ -172,39 +187,42 @@ app.post(
   }
 );
 
-// Products routes
+// Items routes
 
-//@route    GET /products
-//@desc     Gets all products
+//@route    GET /items
+//@desc     Gets all items
 //@access   User
-app.get("/products", auth, (req, res) => {
-  db.query("select * from car_workshop.product", (err, result) => {
-    if (err) throw err;
-    return res.json(result);
-  });
-});
-
-//@route    GET /products/:id
-//@desc     Get a product using its id
-//@access   User
-app.get("/products/:id", auth, (req, res) => {
+app.get("/items", auth, (req, res) => {
   db.query(
-    `select * from car_workshop.product where id=${req.params.id}`,
+    "select id, name, buy_price, sell_price, quantity, status from car_workshop.item where is_deleted=0",
     (err, result) => {
       if (err) throw err;
-      // Check if the product exists
+      return res.json(result);
+    }
+  );
+});
+
+//@route    GET /items/:id
+//@desc     Get a item using its id
+//@access   User
+app.get("/items/:id", auth, (req, res) => {
+  db.query(
+    `select id, name, buy_price, sell_price, quantity, status from car_workshop.item where id=${req.params.id} and is_deleted=0`,
+    (err, result) => {
+      if (err) throw err;
+      // Check if the item exists
       if (result.length === 0)
-        return res.status(404).json({ msg: "Product not found" });
+        return res.status(404).json({ msg: "Item not found" });
       res.json(result);
     }
   );
 });
 
-//@route    POST /products
-//@desc     Adds a new product
+//@route    POST /items
+//@desc     Adds a new item
 //@access   User
 app.post(
-  "/products",
+  "/items",
   [
     check("name", "Name is required").notEmpty(),
     check("buy_price", "Please enter a valid buy price").isFloat({ min: 0 }),
@@ -218,56 +236,53 @@ app.post(
       return res.status(400).json(errors);
     }
     const { name, buy_price, sell_price, quantity, status } = req.body;
-    const product = { name, buy_price, sell_price };
+    const item = { name, buy_price, sell_price };
 
     // Optional parameters
-    if (quantity) product.quantity = quantity;
-    if (status) product.status = status;
+    if (quantity) item.quantity = quantity;
+    if (status) item.status = status;
 
-    db.query(
-      "insert into car_workshop.product set ?",
-      product,
-      (err, result) => {
-        if (err) throw err;
-        return res.json({ msg: "Product added" });
-      }
-    );
+    db.query("insert into car_workshop.item set ?", item, (err, result) => {
+      if (err) throw err;
+      return res.json({ msg: "Item added" });
+    });
   }
 );
 
-//@route    PATCH /products/:id
-//@desc     Updates a product using its id
+//@route    PATCH /items/:id
+//@desc     Updates a item using its id
 //@access   User
-app.patch("/products/:id", auth, (req, res) => {
+app.patch("/items/:id", auth, (req, res) => {
   const { name, buy_price, sell_price, quantity, status } = req.body;
-  const product = {};
+  const item = {};
 
   // Check for fields that will be modified
-  if (name) product.name = name;
-  if (buy_price) product.buy_price = buy_price;
-  if (sell_price) product.sell_price = sell_price;
-  if (quantity) product.quantity = quantity;
-  if (status) product.status = status;
+  if (name) item.name = name;
+  if (buy_price) item.buy_price = buy_price;
+  if (sell_price) item.sell_price = sell_price;
+  if (quantity) item.quantity = quantity;
+  if (status) item.status = status;
 
   db.query(
-    `update car_workshop.product set ? where id=${req.params.id}`,
-    product,
+    `update car_workshop.item set ? where id=${req.params.id}`,
+    item,
     (err, result) => {
       if (err) throw err;
-      return res.json({ msg: "Product modified" });
+      return res.json({ msg: "Item modified" });
     }
   );
 });
 
-//@route    DELETE /products/:id
-//@desc     Deletes a product using its id
+//@route    DELETE /items/:id
+//@desc     Deletes a item using its id
 //@access   User
-app.delete("/products/:id", auth, (req, res) => {
+app.delete("/items/:id", auth, (req, res) => {
   db.query(
-    `delete from car_workshop.product where id=${req.params.id}`,
+    `update car_workshop.item set ? where id=${req.params.id}`,
+    { is_deleted: true },
     (err, result) => {
       if (err) throw err;
-      return res.json({ msg: "Product deleted" });
+      return res.json({ msg: "Item deleted" });
     }
   );
 });
@@ -278,10 +293,13 @@ app.delete("/products/:id", auth, (req, res) => {
 //@desc     Gets all cars
 //@access   User
 app.get("/cars", auth, (req, res) => {
-  db.query("select * from car_workshop.car", (err, result) => {
-    if (err) throw err;
-    return res.json(result);
-  });
+  db.query(
+    "select * from car_workshop.car where is_deleted=0",
+    (err, result) => {
+      if (err) throw err;
+      return res.json(result);
+    }
+  );
 });
 
 //@route    GET /cars/:id
@@ -289,7 +307,7 @@ app.get("/cars", auth, (req, res) => {
 //@access   User
 app.get("/cars/:id", auth, (req, res) => {
   db.query(
-    `select * from car_workshop.car where id=${req.params.id}`,
+    `select * from car_workshop.car where id=${req.params.id} and is_deleted=0`,
     (err, result) => {
       if (err) throw err;
       // Check if the car exists
@@ -366,7 +384,8 @@ app.patch("/cars/:id", auth, (req, res) => {
 //@access   User
 app.delete("/cars/:id", auth, (req, res) => {
   db.query(
-    `delete from car_workshop.car where id=${req.params.id}`,
+    `update car_workshop.car where id=${req.params.id}`,
+    { is_deleted: true },
     (err, result) => {
       if (err) throw err;
       if (result.affectedRows === 0)
